@@ -1,0 +1,52 @@
+/*
+  Plastic Detection Project
+  Uses Inductive proximity Sensor
+  created 6 Jan 2020
+  by Sanoop
+*/
+#include <Servo.h>    // Import the Servo library to control the servo
+
+Servo servo;          // Initialise the servo object to control the servo
+
+int pos = 10;         // variable for the position of the servo
+
+int sensorPin=2;
+int servoPin=13;
+int waitTime=2000;
+int delayTime=10;
+
+void setup() {
+  //Proximity Sensor bootup configuration
+  //start serial connection
+  Serial.begin(9600);
+  //configure pin sensorPin as an input and enable the internal pull-up resistor
+  pinMode(sensorPin, INPUT_PULLUP);
+
+  //Servo motor bootup configuration
+  servo.attach(servoPin);    // Tell the servo object that we've connected to pin 8
+  servo.write(0);     // Helps to adjust the initial position
+  delay(40);  
+}
+
+void loop() {
+  //read the Proximity Sensor Output value into a variable
+  int sensorVal = digitalRead(sensorPin);
+  //print out the value of the Proximity Sensor
+  Serial.println(sensorVal);
+
+  if (sensorVal == LOW) {
+      // Make the pos variabele go from 0 to 180
+      for (pos = 0; pos <= 180; pos++) {
+        servo.write(pos);  // Set the position of the servo
+        delay(delayTime);         // Wait for 10ms for the servo to process the command
+      }
+      
+      //Waiting for sometime before closing the door.
+      delay(waitTime);
+      // Make the pos variabele go from 180 to 0
+      for (pos = 180; pos >= 0; pos--) {
+        servo.write(pos);  // Set the position of the servo
+        delay(delayTime);         // Wait for 10ms for the servo to process the command
+      }
+  }
+}

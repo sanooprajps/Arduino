@@ -10,8 +10,9 @@ Servo servo;          // Initialise the servo object to control the servo
 
 int pos = 10;         // variable for the position of the servo
 
-int sensorPin=2;
-int servoPin=13;
+//int sensorPin=2;
+int sensorAnalogPin=A5;
+int servoPin=12;
 int waitTime=2000;
 int delayTime=10;
 
@@ -20,7 +21,7 @@ void setup() {
   //start serial connection
   Serial.begin(9600);
   //configure pin sensorPin as an input and enable the internal pull-up resistor
-  pinMode(sensorPin, INPUT_PULLUP);
+  pinMode(sensorAnalogPin, INPUT_PULLUP);
 
   //Servo motor bootup configuration
   servo.attach(servoPin);    // Tell the servo object that we've connected to pin 8
@@ -30,11 +31,13 @@ void setup() {
 
 void loop() {
   //read the Proximity Sensor Output value into a variable
-  int sensorVal = digitalRead(sensorPin);
+  //int sensorVal = digitalRead(sensorPin);
+  int sensorVal = analogRead(sensorAnalogPin);
   //print out the value of the Proximity Sensor
   Serial.println(sensorVal);
 
-  if (sensorVal == LOW) {
+  if (sensorVal < 50) {
+    
       // Make the pos variabele go from 0 to 180
       for (pos = 0; pos <= 180; pos++) {
         servo.write(pos);  // Set the position of the servo
@@ -48,5 +51,7 @@ void loop() {
         servo.write(pos);  // Set the position of the servo
         delay(delayTime);         // Wait for 10ms for the servo to process the command
       }
+      delay(waitTime);
+      
   }
 }

@@ -38,6 +38,7 @@ void loop() {
 
   if (sensorVal < 50) {
     
+      // Servo motor can max rotate 180 degress
       // Make the pos variabele go from 0 to 180
       for (pos = 0; pos <= 180; pos++) {
         servo.write(pos);  // Set the position of the servo

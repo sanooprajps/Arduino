@@ -7,3 +7,5 @@ it will alert in such a way user is able to identiy that he is reaching near the
 4. Speaker?? = Planning to give some audion instruction to the user.
 
 Stick will start alerting if the object is near 1.5 meters, and when the target is reaching near, it will be a stable bepp from the buzzer.
+
+Note:- Arduino can only play 16 bit PCM 8kHZ audio mp3 & that mp3 should be coded using a encoder software

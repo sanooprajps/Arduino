@@ -6,8 +6,3 @@
 4. If the smart system fails, auto rollback to Manual Motor Operating mode
 5. Single Press manual mode activation
 6. Can have multiple modes - No clarity yet!
-
-# Rough Sketch
-
-![Rough Sketch](/images/RoughSketch.jpg)
-

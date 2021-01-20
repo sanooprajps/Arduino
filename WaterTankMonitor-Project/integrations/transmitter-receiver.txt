@@ -2,7 +2,7 @@
 
 Circuit is made of HT12E (ENCODER) and HT12D (DECODER) and a pair of Rf modules of 433 Mhz.
 
-[reference page] (https://www.instructables.com/Make-a-RF-Transmitter-and-Receiver-With-HT12E-HT12/)
+[reference page](https://www.instructables.com/Make-a-RF-Transmitter-and-Receiver-With-HT12E-HT12/)
 
 1. RF transmitter and RF receiver of 433 Mhz
 2. IC HT12D

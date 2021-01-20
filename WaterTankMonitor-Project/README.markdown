@@ -7,4 +7,4 @@
 5. Single Press manual mode activation
 6. Can have multiple modes - No clarity yet!
 
-![Rough Sketch](/images/RoughSketch.jpg)
+![Rough Sketch](images/RoughSketch.jpg)

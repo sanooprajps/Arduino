@@ -1,0 +1,8 @@
+1. Radiohead library is needed to have RF transmission
+    36 bits -> Training Preamble
+    12 bits -> Start Symbol
+    8 bits -> Message length
+    16 bits -> Frame Check Sequence
+2. 
+
+

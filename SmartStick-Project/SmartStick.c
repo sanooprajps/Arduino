@@ -7,10 +7,10 @@ Ref:-
 https://forum.arduino.cc/index.php?topic=193774.0
 - Sanoop
 */
-int trigPin = 9;
-int echoPin = 10;
+int trigPin = 6;
+int echoPin = 7;
 //int led = A5;
-int led = 7;
+int led = 3;
 
 
 void setup() {
@@ -29,6 +29,7 @@ void loop() {
   digitalWrite(trigPin, LOW);
   duration=pulseIn(echoPin, HIGH);
   distance =(duration/2)/29.1;
+  Serial.print("distance: ");
   Serial.print(distance);
   Serial.println("CM");
   delay(10);

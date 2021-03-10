@@ -9,9 +9,10 @@ RH_ASK rf_driver;
 // with the arduino pin number it is connected to
 const int rs = 7, en = 6, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
-uint8_t i;    //and integer used to count
-uint8_t relayPin = 8; //Relay to control the motor
-uint8_t motorFlag = 0; //0: Not running, 1: Running
+//int i;    //and integer used to count
+int i;    //and integer used to count
+int relayPin = 8; //Relay to control the motor
+int motorFlag = 0; //0: Not running, 1: Running
 //Water Tank variables
 const float tankCapacity = 750.00; //Value in liter
 const float tankHeight = 93.00; //Value in Centimeter
@@ -52,11 +53,12 @@ float captureRfData() {
 */
 
 int confirmSensorLoop(int thresholdVal, char OperatorL[]){
-  float conf_recvalue;
+  
   int conf_count = 0;
   int conf_error=0;
 
    while (conf_count < 5) {
+      float conf_recvalue = 00.00;
       conf_recvalue = captureRfData();
       if (conf_recvalue == NULL){
         conf_error++;
@@ -165,7 +167,7 @@ if (l_recvalue < highThreshold) {
     motorFlag = 0;
   }
   else if (motorFlag == 0) {
-    Serial.println("loop: Continue keeping the motor idle as the distance still <20cm");
+    Serial.println("loop: Continue keeping the motor idle as the distance is  <20cm");
   }
   else {
     Serial.println("loop: False sensor value. Continue in the same state.");
@@ -178,13 +180,13 @@ else if (l_recvalue > lowThreshold){
   }
   if (result_loop == 1 && motorFlag == 0) {
     lcd.setCursor (0,1);
-    lcd.print ("Running!");
+    lcd.print ("Motor Running!");
     Serial.print("loop: Starting the motor as it reached 70cm long\n");
     digitalWrite (relayPin, HIGH);
     motorFlag = 1;
   }
   else if (motorFlag == 1) {
-    Serial.println("loop: Continue running the motor as the distance still >70cm");
+    Serial.println("loop: Continue running the motor as the distance is still >70cm");
   }
   else {
     Serial.println("loop: False sensor value. Continue in the same state.");
